@@ -41,11 +41,14 @@ pipeline {
         }
 
         stage('Deploy with Docker Compose') {
-            steps {
-                sh 'docker compose down'
-                sh 'docker compose up -d'
-            }
+    steps {
+        dir('student-management-project') {
+            sh 'docker compose -f docker-compose.yml down || true'
+            sh 'docker compose -f docker-compose.yml up -d --build'
         }
+    }
+}
+
     }
 }
 
