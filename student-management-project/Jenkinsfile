@@ -9,12 +9,7 @@ pipeline {
 
     stages {
 
-        stage('Checkout Code') {
-            steps {
-                git branch: 'main',
-                url: 'https://github.com/kishoresuzil1005/multi-tier-architecture/tree/main/student-management-project'
-            }
-        }
+       
 
         stage('Build Docker Images') {
             steps {
