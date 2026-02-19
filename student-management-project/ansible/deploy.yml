@@ -1,0 +1,27 @@
+- hosts: app
+  become: yes
+
+  tasks:
+
+    - name: Install Docker
+      apt:
+        name: docker.io
+        state: present
+        update_cache: yes
+
+    - name: Run Backend
+      docker_container:
+        name: backend
+        image: yourdockerhub/backend:latest
+        state: started
+        ports:
+          - "5000:5000"
+
+    - name: Run Frontend
+      docker_container:
+        name: frontend
+        image: yourdockerhub/frontend:latest
+        state: started
+        ports:
+          - "8501:8501"
+

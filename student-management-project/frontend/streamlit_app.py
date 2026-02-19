@@ -1,7 +1,8 @@
 import streamlit as st
 import requests
+import os
 
-API_BASE = "http://127.0.0.1:5000"
+API_BASE = os.getenv("API_BASE", "http://backend:5000")
 
 st.title("📚 Student Management Dashboard")
 
